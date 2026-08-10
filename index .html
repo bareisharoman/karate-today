@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KARATE TODAY — Всё о боевых искусствах</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- Общие стили ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background: #0b0b0b;
+            color: #f0ece4;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            /* ----- ЯПОНСКИЙ ФОН (волны) ----- */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M120 280 Q140 240 180 260 Q220 280 240 250 Q260 220 300 240 Q340 260 360 230 L400 200 L400 400 L0 400 L0 200 Q40 230 80 250 Q120 270 120 280Z' fill='rgba(212,167,67,0.03)'/%3E%3Cpath d='M100 320 Q130 280 170 300 Q210 320 230 290 Q250 260 290 280 Q330 300 350 270 L400 240 L400 400 L0 400 L0 240 Q30 270 70 290 Q110 310 100 320Z' fill='rgba(212,167,67,0.025)'/%3E%3Cpath d='M80 360 Q110 320 160 340 Q210 360 230 330 Q250 300 290 320 Q330 340 350 310 L400 280 L400 400 L0 400 L0 280 Q20 310 60 330 Q100 350 80 360Z' fill='rgba(212,167,67,0.02)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            background-attachment: fixed;
+        }
+
+        .content-wrapper {
+            background: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(1px);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ---------- Шапка ---------- */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            background: rgba(11, 11, 11, 0.92);
+            backdrop-filter: blur(6px);
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #d4a743;
+            text-shadow: 0 0 8px rgba(212, 167, 67, 0.3);
+        }
+
+        .logo span {
+            color: #f0ece4;
+        }
+
+        nav a {
+            color: #f0ece4;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover {
+            color: #d4a743;
+            border-bottom-color: #d4a743;
+        }
+
+        /* ---------- Герой ---------- */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at 20% 30%, rgba(26,21,16,0.8) 0%, rgba(11,11,11,0.6) 80%);
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #d4a743;
+            text-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .hero-icon {
+            display: inline-block;
+            font-size: 3.8rem;
+            margin-right: 15px;
+            vertical-align: middle;
+            animation: pulse-fist 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 167, 67, 0.2));
+        }
+
+        @keyframes pulse-fist {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(-8deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .hero h1 small {
+            display: block;
+            font-size: 1.6rem;
+            color: #f0ece4;
+            letter-spacing: 8px;
+            margin-top: 10px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #b5aea2;
+        }
+
+        /* ---------- ЯПОНСКИЙ СТИЛЬ КНОПОК ---------- */
+        .btn {
+            display: inline-block;
+            background: #d4a743;
+            color: #0b0b0b;
+            padding: 14px 48px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid #d4a743;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(212, 167, 67, 0.1);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s;
+            transform: scale(0.5);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #d4a743;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.25), inset 0 0 20px rgba(212, 167, 67, 0.05);
+            border-color: #d4a743;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .btn:active {
+            transform: translateY(0px) scale(0.98);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #d4a743;
+            border-color: #d4a743;
+            margin-left: 16px;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #d4a743;
+            color: #0b0b0b;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
+        }
+
+        .btn-outline:hover::after {
+            opacity: 0;
+        }
+
+        /* ---------- Секции ---------- */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #1e1e1e;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4a743;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #b5aea2;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* ---------- О канале ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: #ccc6ba;
+        }
+
+        .about-text strong {
+            color: #d4a743;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(2px);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .stat-card .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #d4a743;
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8a847a;
+        }
+
+        /* ---------- Видео ---------- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: #d4a743;
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.08);
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-card .info {
+            padding: 20px;
+        }
+
+        .video-card .info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #f0ece4;
+        }
+
+        .video-card .info p {
+            color: #8a847a;
+            font-size: 0.95rem;
+        }
+
+        .video-card .info .tag {
+            display: inline-block;
+            background: #2a2a2a;
+            color: #d4a743;
+            font-size: 0.75rem;
+            padding: 2px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        /* ---------- Кобудо и Тайфукан ---------- */
+        .org-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .org-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(2px);
+            padding: 35px 30px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .org-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4a743;
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
+        }
+
+        .org-card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .org-card h3 {
+            font-size: 1.8rem;
+            color: #d4a743;
+            margin-bottom: 15px;
+        }
+
+        .org-card p {
+            color: #b5aea2;
+            font-size: 1.05rem;
+        }
+
+        /* ---------- Тренер ---------- */
+        .coach-wrap {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(2px);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .coach-wrap:hover {
+            border-color: #d4a743;
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.06);
+        }
+
+        .coach-wrap .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            flex-shrink: 0;
+            border: 3px solid #d4a743;
+        }
+
+        .coach-wrap .bio h3 {
+            font-size: 2rem;
+            color: #d4a743;
+            margin-bottom: 5px;
+        }
+
+        .coach-wrap .bio .rank {
+            font-size: 1.2rem;
+            color: #d4a743;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .coach-wrap .bio p {
+            color: #b5aea2;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .coach-wrap .bio ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+            color: #b5aea2;
+        }
+
+        .coach-wrap .bio ul li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .coach-wrap .bio .slogan {
+            margin-top: 18px;
+            font-weight: 700;
+            color: #d4a743;
+        }
+
+        /* ---------- Контакты ---------- */
+        .contacts {
+            text-align: center;
+        }
+
+        .contacts .socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contacts .socials a {
+            color: #b5aea2;
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            transition: all 0.3s;
+        }
+
+        .contacts .socials a:hover {
+            color: #d4a743;
+            border-bottom-color: #d4a743;
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Футер ---------- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #5a544a;
+            font-size: 0.95rem;
+            border-top: 1px solid #1e1e1e;
+        }
+
+        footer span {
+            color: #d4a743;
+        }
+
+        /* ---------- Адаптив ---------- */
+        @media (max-width: 900px) {
+            .about-grid, .org-wrap {
+                grid-template-columns: 1fr;
+            }
+            .coach-wrap {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .coach-wrap .bio ul {
+                text-align: left;
+                padding-left: 20px;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero h1 .hero-icon {
+                font-size: 2.8rem;
+                margin-right: 10px;
+            }
+            .hero h1 small {
+                font-size: 1.2rem;
+            }
+            .header-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+            nav a {
+                margin: 0 12px;
+                font-size: 1rem;
+            }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+            .btn {
+                padding: 12px 32px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 60px 0;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero h1 .hero-icon {
+                font-size: 2.2rem;
+                margin-right: 8px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            .coach-wrap .bio ul {
+                padding-left: 10px;
+            }
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+
+        <!-- ===== ШАПКА ===== -->
+        <header>
+            <div class="container header-inner">
+                <div class="logo">KARATE <span>TODAY</span></div>
+                <nav>
+                    <a href="#about">О канале</a>
+                    <a href="#videos">Видео</a>
+                    <a href="#org">Кобудо & Тайфукан</a>
+                    <a href="#coach">Автор</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
+        <section class="hero">
+            <div class="container">
+                <h1>
+                    <span class="hero-icon">👊</span>
+                    KARATE TODAY
+                    <small>Всё о боевых искусствах</small>
+                </h1>
+                <p>
+                    Канал для одиноких самураев и воинов. <br>
+                    Нестандартные тренировки, разбор ката и техники для каратистов,
+                    бойцов ММА, рукопашников и самбистов.
+                </p>
+                <a href="https://youtube.com/@karatetoday" target="_blank" class="btn">Перейти на YouTube</a>
+                <a href="#videos" class="btn btn-outline">Смотреть видео</a>
+            </div>
+        </section>
+
+        <!-- ===== О КАНАЛЕ ===== -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">О канале</h2>
+                <p class="section-sub">
+                    KARATE TODAY — это сообщество тех, кто живёт боевыми искусствами.
+                    Здесь ты найдёшь глубокий разбор техник, авторские тренировки и
+                    вдохновение для ежедневного роста.
+                </p>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            <strong>KARATE TODAY</strong> — это не просто канал, это
+                            философия. Мы показываем <strong>каратэ</strong> и
+                            <strong>боевые искусства</strong> с нестандартной стороны:
+                            от классических ката до тренировок с тяжёлым мешком
+                            для ММА и самбо.
+                        </p>
+                        <p>
+                            Наши видео — для тех, кто ищет <strong>силу, технику и
+                            смысл</strong>. Присоединяйся к армии воинов!
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="number">14k+</span>
+                            <span class="label">Просмотров</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">∞</span>
+                            <span class="label">Дух воина</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">24/7</span>
+                            <span class="label">Тренировки</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">#</span>
+                            <span class="label">karatetoday</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ВИДЕО ===== -->
+        <section id="videos">
+            <div class="container">
+                <h2 class="section-title">Популярные видео</h2>
+                <p class="section-sub">
+                    Разборы ката, тренировки и техники — всё, что нужно для
+                    совершенствования.
+                </p>
+                <div class="video-grid">
+
+                    <div class="video-card">
+                        <img src="https://img.youtube.com/vi/6qTGYIYtIgw/maxresdefault.jpg" alt="Ката Хейан Нидан">
+                        <div class="info">
+                            <h3>Изучаем ката ХЕЙАН НИДАН</h3>
+                            <p>Детальный разбор техники и амплитуды движений.</p>
+                            <span class="tag">Ката</span>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <img src="https://img.youtube.com/vi/1F9rHhKxqJ8/maxresdefault.jpg" alt="Ката Унсу">
+                        <div class="info">
+                            <h3>Ката УНСУ стиля шотокан</h3>
+                            <p>Медленное и быстрое выполнение — полный разбор.</p>
+                            <span class="tag">Шотокан</span>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <img src="https://img.youtube.com/vi/U9t-2hJXU_Q/maxresdefault.jpg" alt="Тренировка с мешком">
+                        <div class="info">
+                            <h3>Тренировка с тяжёлым мешком</h3>
+                            <p>Нестандартный вариант для каратистов и бойцов ММА.</p>
+                            <span class="tag">Тренировка</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== КОБУДО И ТАЙФУКАН ===== -->
+        <section id="org">
+            <div class="container">
+                <h2 class="section-title">Кобудо & Тайфукан</h2>
+                <p class="section-sub">
+                    Традиционное оружие и организация в Минске для настоящих воинов.
+                </p>
+                <div class="org-wrap">
+                    <div class="org-card">
+                        <span class="icon">⚔️</span>
+                        <h3>Кобудо</h3>
+                        <p>
+                            Искусство владения традиционным оружием: <strong>бо, сай, тонфа, нути-бо</strong> и другие.
+                            Разбираем технику, ката и боевое применение.
+                        </p>
+                    </div>
+                    <div class="org-card">
+                        <span class="icon">🏯</span>
+                        <h3>Тайфукан Минск</h3>
+                        <p>
+                            Официальная организация <strong>ТАЙФУКАН</strong> в Минске.
+                            Обучение каратэ, кобудо, философия и традиции.
+                            Присоединяйся к сообществу!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== АВТОР ===== -->
+        <section id="coach">
+            <div class="container">
+                <h2 class="section-title">Автор канала</h2>
+                <div class="coach-wrap">
+                    <div class="avatar">🥋</div>
+                    <div class="bio">
+                        <h3>Барейша Роман Олегович</h3>
+                        <span class="rank">4 Дан, Сэнсэй</span>
+                        <p>
+                            Основатель и идейный вдохновитель <strong>KARATE TODAY</strong>. 
+                            Практик боевых искусств с многолетним стажем, Мастер спорта Республики Беларусь 
+                            и Мастер международного класса по традиционному Фудокан-Шотокан каратэ-до.
+                        </p>
+                        <ul>
+                            <li>🏆 Чемпион мира и Европы по традиционному Фудокан-Шотокан каратэ-до</li>
+                            <li>🥇 Многократный чемпион и победитель первенств Республики Беларусь по каратэ-до и кобудо</li>
+                            <li>🇧🇾 Чемпион Республики Беларусь по каратэ (WKF)</li>
+                            <li>⚔️ Мастер международного класса по традиционному Фудокан-Шотокан каратэ-до</li>
+                        </ul>
+                        <p class="slogan">#karatetoday — тренируйся осмысленно.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== КОНТАКТЫ ===== -->
+        <section id="contacts" class="contacts">
+            <div class="container">
+                <h2 class="section-title">Будь на связи</h2>
+                <p class="section-sub">
+                    Подписывайся на все соцсети, чтобы не пропускать новые видео, тренировки и события.
+                </p>
+                <div class="socials">
+                    <a href="https://youtube.com/@karatetoday" target="_blank">YouTube</a>
+                    <a href="https://www.tiktok.com/@karatetoday" target="_blank">TikTok</a>
+                    <a href="https://www.instagram.com/romanbareisha" target="_blank">Instagram (личный)</a>
+                    <a href="https://www.instagram.com/karate.today" target="_blank">Instagram (канал)</a>
+                    <a href="https://vk.ru/karatetoday" target="_blank">VK</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ФУТЕР ===== -->
+        <footer>
+            <div class="container">
+                &copy; 2026 <span>KARATE TODAY</span> — Всё о боевых искусствах.
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>
