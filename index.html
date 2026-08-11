@@ -20,7 +20,7 @@
             color: #f0ece4;
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* НОВЫЙ КРАСИВЫЙ ФОН: градиент + текстура "шум" */
+            /* НОВЫЙ ФОН: градиент + текстура */
             background: 
                 radial-gradient(ellipse at 30% 20%, #2a1f0f 0%, #0d0b08 70%),
                 repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
@@ -721,7 +721,257 @@
     </style>
 </head>
 <body>
-    <!-- ВСЁ ОСТАЛЬНОЕ СОДЕРЖИМОЕ (HTML) ОСТАЁТСЯ ТОЧНО ТАКИМ ЖЕ, КАК В ПРЕДЫДУЩЕМ ОТВЕТЕ -->
-    <!-- Я НЕ СТАЛ ПОВТОРЯТЬ ЕГО ЗДЕСЬ, ЧТОБЫ НЕ РАЗДУВАТЬ ОТВЕТ, НО В ВАШЕМ КОДЕ ОНО ДОЛЖНО БЫТЬ -->
+    <div class="content-wrapper">
+
+        <!-- ===== ШАПКА ===== -->
+        <header>
+            <div class="container header-inner">
+                <div class="logo">KARATE <span>TODAY</span></div>
+                <nav>
+                    <a href="#about">О канале</a>
+                    <a href="#links">Ссылки</a>
+                    <a href="#news">Новости</a>
+                    <a href="#org">Кобудо</a>
+                    <a href="#coach">Автор</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ===== ГЕРОЙ ===== -->
+        <section class="hero">
+            <div class="container">
+                <h1>
+                    <span class="hero-icon">👊</span>
+                    KARATE TODAY
+                    <small>Всё о боевых искусствах</small>
+                </h1>
+                <p>
+                    Канал для одиноких самураев и воинов. <br>
+                    Нестандартные тренировки, разбор ката и техники для каратистов,
+                    бойцов ММА, рукопашников и самбистов.
+                </p>
+                <a href="https://youtube.com/@karatetoday" target="_blank" class="btn">Перейти на YouTube</a>
+                <a href="#news" class="btn btn-outline">Новости</a>
+            </div>
+        </section>
+
+        <!-- ===== О КАНАЛЕ ===== -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">О канале</h2>
+                <p class="section-sub">
+                    KARATE TODAY — это сообщество тех, кто живёт боевыми искусствами.
+                    Здесь ты найдёшь глубокий разбор техник, авторские тренировки и
+                    вдохновение для ежедневного роста.
+                </p>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            <strong>KARATE TODAY</strong> — это не просто канал, это
+                            философия. Мы показываем <strong>каратэ</strong> и
+                            <strong>боевые искусства</strong> с нестандартной стороны:
+                            от классических ката до тренировок с тяжёлым мешком
+                            для ММА и самбо.
+                        </p>
+                        <p>
+                            Наши видео — для тех, кто ищет <strong>силу, технику и
+                            смысл</strong>. Присоединяйся к армии воинов!
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="number">14k+</span>
+                            <span class="label">Просмотров</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">∞</span>
+                            <span class="label">Дух воина</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">24/7</span>
+                            <span class="label">Тренировки</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="number">#</span>
+                            <span class="label">karatetoday</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ССЫЛКИ ===== -->
+        <section id="links">
+            <div class="container">
+                <h2 class="section-title">📌 Полезные ресурсы</h2>
+                <p class="section-sub">
+                    Переходите по ссылкам, чтобы узнать больше о карате, кобудо и клубе Тайфукан.
+                </p>
+                <div class="links-grid">
+
+                    <a href="https://karate-do.by" target="_blank" class="link-card">
+                        <span class="icon">🏯</span>
+                        <span class="title">Официальный сайт</span>
+                        <span class="desc">Всё о Тайфукан в Минске</span>
+                    </a>
+
+                    <a href="https://www.instagram.com/taifukan_karate_kobudo" target="_blank" class="link-card">
+                        <span class="icon">📸</span>
+                        <span class="title">Instagram Тайфукан</span>
+                        <span class="desc">Фото и видео с тренировок</span>
+                    </a>
+
+                    <a href="https://youtube.com/@karatetoday" target="_blank" class="link-card">
+                        <span class="icon">▶️</span>
+                        <span class="title">YouTube канал</span>
+                        <span class="desc">Видеоуроки, разборы, тренировки</span>
+                    </a>
+
+                    <a href="https://vk.ru/karatetoday" target="_blank" class="link-card">
+                        <span class="icon">💬</span>
+                        <span class="title">VK сообщество</span>
+                        <span class="desc">Новости и общение</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== НОВОСТИ ===== -->
+        <section id="news">
+            <div class="container">
+                <h2 class="section-title">🥋 Новости каратэ</h2>
+                <p class="section-sub">
+                    Актуальные события из мира белорусского и международного каратэ.
+                </p>
+                <div class="news-grid">
+
+                    <div class="news-card">
+                        <span class="date">📅 28–29 августа 2025</span>
+                        <span class="title">Первенство Республики Беларусь по каратэ</span>
+                        <span class="source">Источник: <a href="https://www.karatebelarus.by" target="_blank">Белорусская федерация каратэ</a></span>
+                    </div>
+
+                    <div class="news-card">
+                        <span class="date">🏅 Февраль 2025</span>
+                        <span class="title">Золото на Серии А Karate 1: Иван Кудинов победил в Ларнаке (Кипр)</span>
+                        <span class="source">Источник: <a href="https://www.karatebelarus.by" target="_blank">Белорусская федерация каратэ</a></span>
+                    </div>
+
+                    <div class="news-card">
+                        <span class="date">🏅 2025</span>
+                        <span class="title">2 медали на международном форуме "Москва-Вселенная каратэ" (300+ участников, 42 страны)</span>
+                        <span class="source">Источник: <a href="https://www.karatebelarus.by" target="_blank">Белорусская федерация каратэ</a></span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== КОБУДО ===== -->
+        <section id="org">
+            <div class="container">
+                <h2 class="section-title">Кобудо & Тайфукан</h2>
+                <p class="section-sub">
+                    Традиционное оружие и организация в Минске для настоящих воинов.
+                </p>
+                <div class="org-wrap">
+                    <div class="org-card">
+                        <span class="icon">⚔️</span>
+                        <h3>Кобудо</h3>
+                        <p>
+                            Искусство владения традиционным оружием: <strong>бо, сай, тонфа, нути-бо</strong> и другие.
+                            Разбираем технику, ката и боевое применение.
+                        </p>
+                    </div>
+                    <div class="org-card">
+                        <span class="icon">🏯</span>
+                        <h3>Тайфукан Минск</h3>
+                        <p>
+                            Официальная организация <strong>ТАЙФУКАН</strong> в Минске.
+                            Обучение каратэ, кобудо, философия и традиции.
+                            Присоединяйся к сообществу!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== АВТОР ===== -->
+        <section id="coach">
+            <div class="container">
+                <h2 class="section-title">Автор канала</h2>
+                <div class="coach-wrap">
+                    <div class="avatar">🥋</div>
+                    <div class="bio">
+                        <h3>Барейша Роман Олегович</h3>
+                        <span class="rank">4 Дан, Сэнсэй</span>
+                        <p>
+                            Основатель и идейный вдохновитель <strong>KARATE TODAY</strong>. 
+                            Практик боевых искусств с многолетним стажем, Мастер спорта Республики Беларусь 
+                            и Мастер международного класса по традиционному Фудокан-Шотокан каратэ-до.
+                        </p>
+                        <ul>
+                            <li>🏆 Чемпион мира и Европы по традиционному Фудокан-Шотокан каратэ-до</li>
+                            <li>🥇 Многократный чемпион и победитель первенств Республики Беларусь по каратэ-до и кобудо</li>
+                            <li>🇧🇾 Чемпион Республики Беларусь по каратэ (WKF)</li>
+                            <li>⚔️ Мастер международного класса по традиционному Фудокан-Шотокан каратэ-до</li>
+                        </ul>
+                        <p class="slogan">#karatetoday — тренируйся осмысленно.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== КОНТАКТЫ ===== -->
+        <section id="contacts" class="contacts">
+            <div class="container">
+                <h2 class="section-title">Будь на связи</h2>
+                <p class="section-sub">
+                    Подписывайся на все соцсети, чтобы не пропускать новые видео, тренировки и события.
+                </p>
+                <div class="socials">
+                    <a href="https://youtube.com/@karatetoday" target="_blank">▶️ YouTube</a>
+                    <a href="https://www.tiktok.com/@karatetoday" target="_blank">🎵 TikTok</a>
+                    <a href="https://www.instagram.com/romanbareisha" target="_blank">📸 Instagram (личный)</a>
+                    <a href="https://www.instagram.com/karate.today" target="_blank">📸 Instagram (канал)</a>
+                    <a href="https://vk.ru/karatetoday" target="_blank">💬 VK</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ФУТЕР ===== -->
+        <footer>
+            <div class="container">
+                &copy; 2026 <span>KARATE TODAY</span> — Всё о боевых искусствах.
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ===== КНОПКА "НАВЕРХ" ===== -->
+    <button id="topBtn" title="Наверх">⬆</button>
+
+    <script>
+        // Кнопка "Наверх" — появляется при скролле
+        const topBtn = document.getElementById("topBtn");
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        });
+
+        // Плавный скролл наверх
+        topBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
 </body>
 </html>
