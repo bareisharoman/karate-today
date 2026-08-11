@@ -21,37 +21,41 @@
             color: #f0ece4;
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* ЯПОНСКИЙ ФОН С САКУРОЙ */
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(60, 30, 20, 0.3) 0%, rgba(11, 11, 11, 0.9) 90%),
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M120 280 Q140 240 180 260 Q220 280 240 250 Q260 220 300 240 Q340 260 360 230 L400 200 L400 400 L0 400 L0 200 Q40 230 80 250 Q120 270 120 280Z' fill='rgba(212,167,67,0.03)'/%3E%3Cpath d='M100 320 Q130 280 170 300 Q210 320 230 290 Q250 260 290 280 Q330 300 350 270 L400 240 L400 400 L0 400 L0 240 Q30 270 70 290 Q110 310 100 320Z' fill='rgba(212,167,67,0.025)'/%3E%3Cpath d='M80 360 Q110 320 160 340 Q210 360 230 330 Q250 300 290 320 Q330 340 350 310 L400 280 L400 400 L0 400 L0 280 Q20 310 60 330 Q100 350 80 360Z' fill='rgba(212,167,67,0.02)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 400px 400px;
             background-attachment: fixed;
+            overflow-x: hidden;
         }
 
-        /* ЯПОНСКИЙ ДЕКОРАТИВНЫЙ ЭЛЕМЕНТ — САКУРА (плавающие лепестки) */
-        body::before {
-            content: '🌸';
-            position: fixed;
-            font-size: 4rem;
-            opacity: 0.08;
-            bottom: 10%;
-            right: 5%;
-            transform: rotate(-15deg);
-            pointer-events: none;
-            z-index: 0;
-        }
-        body::after {
-            content: '⚔️';
-            position: fixed;
-            font-size: 8rem;
-            opacity: 0.04;
-            top: 15%;
-            left: 3%;
-            transform: rotate(25deg);
-            pointer-events: none;
-            z-index: 0;
+        /* АНИМИРОВАННЫЕ ЛЕПЕСТКИ САКУРЫ (только на десктопе) */
+        @media (min-width: 1024px) {
+            .sakura-petal {
+                position: fixed;
+                font-size: 1.8rem;
+                opacity: 0.25;
+                pointer-events: none;
+                z-index: 9999;
+                animation: fall linear infinite;
+            }
+            .sakura-petal:nth-child(1) { left: 5%; animation-duration: 14s; animation-delay: 0s; font-size: 1.6rem; }
+            .sakura-petal:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 3s; font-size: 2rem; }
+            .sakura-petal:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 5s; font-size: 1.4rem; }
+            .sakura-petal:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 2.2rem; }
+            .sakura-petal:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 7s; font-size: 1.5rem; }
+            .sakura-petal:nth-child(6) { left: 55%; animation-duration: 13s; animation-delay: 2s; font-size: 1.9rem; }
+            .sakura-petal:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 4s; font-size: 1.7rem; }
+            .sakura-petal:nth-child(8) { left: 75%; animation-duration: 15s; animation-delay: 6s; font-size: 2.1rem; }
+            .sakura-petal:nth-child(9) { left: 85%; animation-duration: 17s; animation-delay: 0s; font-size: 1.3rem; }
+            .sakura-petal:nth-child(10) { left: 92%; animation-duration: 22s; animation-delay: 3s; font-size: 2rem; }
+
+            @keyframes fall {
+                0% { transform: translateY(-10vh) rotate(0deg) scale(0.8); opacity: 0.2; }
+                50% { opacity: 0.35; transform: translateY(50vh) rotate(180deg) scale(1.1); }
+                100% { transform: translateY(110vh) rotate(360deg) scale(0.9); opacity: 0.1; }
+            }
         }
 
         .content-wrapper {
@@ -200,6 +204,22 @@
             text-shadow: 0 0 30px rgba(179, 27, 27, 0.2);
         }
 
+        /* ПЕЧАТЬ (ХАНКО) В ГЕРОЕ */
+        .hanko {
+            display: inline-block;
+            font-family: serif;
+            font-size: 2.8rem;
+            color: #b31b1b;
+            border: 3px solid #b31b1b;
+            padding: 6px 10px 2px 10px;
+            margin-top: 15px;
+            transform: rotate(-6deg);
+            opacity: 0.7;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(179, 27, 27, 0.15);
+            background: rgba(179, 27, 27, 0.05);
+        }
+
         .hero h1 small {
             display: block;
             font-size: 1.8rem;
@@ -212,7 +232,7 @@
         .hero p {
             font-size: 1.4rem;
             max-width: 700px;
-            margin: 0 auto 45px;
+            margin: 20px auto 45px;
             color: #c5bdb0;
             animation: fadeInUp 1.2s ease-out;
             border-left: 3px solid #b31b1b;
@@ -434,7 +454,7 @@
             color: #b5aea2;
         }
 
-        /* ---------- НОВОСТИ ---------- */
+        /* ---------- НОВОСТИ (СВИТОК) ---------- */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -445,20 +465,32 @@
         .news-card {
             background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(2px);
-            padding: 30px 25px;
+            padding: 30px 25px 30px 35px;
             border-radius: 8px;
             border-left: 5px solid #b31b1b;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
+        /* Свиток-какимоно: вертикальная полоса с иероглифом */
+        .news-card::before {
+            content: '武';
+            position: absolute;
+            font-family: serif;
+            font-size: 8rem;
+            color: rgba(179, 27, 27, 0.04);
+            right: -10px;
+            bottom: -20px;
+            transform: rotate(10deg);
+            pointer-events: none;
+        }
         .news-card::after {
             content: '🌸';
             position: absolute;
             font-size: 2.5rem;
             opacity: 0.06;
-            bottom: -10px;
-            right: -10px;
+            top: 10px;
+            right: 10px;
             transform: rotate(-10deg);
         }
         .news-card:hover {
@@ -535,7 +567,7 @@
             font-size: 1.05rem;
         }
 
-        /* ---------- АВТОР ---------- */
+        /* ---------- АВТОР С РАМКОЙ СУМИ-Э ---------- */
         .coach-wrap {
             display: flex;
             gap: 50px;
@@ -546,6 +578,19 @@
             border-radius: 12px;
             border: 1px solid rgba(179, 27, 27, 0.15);
             transition: all 0.4s ease;
+            position: relative;
+        }
+        /* Имитация тушевой рамки */
+        .coach-wrap::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid rgba(179, 27, 27, 0.08);
+            border-radius: 10px;
+            pointer-events: none;
         }
 
         .coach-wrap:hover {
@@ -670,13 +715,29 @@
             box-shadow: 0 0 50px rgba(212, 167, 67, 0.4);
         }
 
-        /* ---------- ФУТЕР ---------- */
+        /* ---------- ФУТЕР С ОРНАМЕНТОМ ---------- */
         footer {
             padding: 45px 0;
             text-align: center;
             color: #5a544a;
             font-size: 0.95rem;
             border-top: 1px solid rgba(179, 27, 27, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Японский орнамент Асаноха */
+        footer::before {
+            content: '⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡ ⬡';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6rem;
+            letter-spacing: 8px;
+            color: rgba(179, 27, 27, 0.08);
+            white-space: nowrap;
+            width: 100%;
+            text-align: center;
         }
 
         footer span {
@@ -743,6 +804,13 @@
             .hero::before {
                 font-size: 6rem;
             }
+            .hanko {
+                font-size: 2rem;
+                padding: 4px 8px 2px 8px;
+            }
+            .sakura-petal {
+                display: none !important;
+            }
         }
 
         @media (max-width: 500px) {
@@ -790,13 +858,30 @@
                 height: 120px;
                 font-size: 3.5rem;
             }
-            body::before, body::after {
-                display: none;
+            .hanko {
+                font-size: 1.6rem;
+                padding: 2px 6px 0 6px;
+            }
+            .sakura-petal {
+                display: none !important;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== АНИМИРОВАННЫЕ ЛЕПЕСТКИ САКУРЫ ===== -->
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+    <div class="sakura-petal">🌸</div>
+
     <div class="content-wrapper">
 
         <!-- ===== ШАПКА ===== -->
@@ -826,6 +911,7 @@
                     <span class="kanji-big">空手</span>
                     <small>Всё о боевых искусствах</small>
                 </h1>
+                <div class="hanko">武</div>
                 <p>
                     Канал для одиноких самураев и воинов. <br>
                     Нестандартные тренировки, разбор ката и техники для каратистов,
