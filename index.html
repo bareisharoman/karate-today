@@ -39,15 +39,16 @@
             padding: 0 20px;
         }
 
-        /* ---------- Шапка ---------- */
+        /* ---------- Шапка (усиленная липкость) ---------- */
         header {
             padding: 20px 0;
             border-bottom: 1px solid #2a2a2a;
             position: sticky;
             top: 0;
-            background: rgba(11, 11, 11, 0.92);
-            backdrop-filter: blur(6px);
-            z-index: 100;
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .header-inner {
@@ -273,7 +274,7 @@
             color: #8a847a;
         }
 
-        /* ===== НОВЫЙ БЛОК: ИКОНКИ И ССЫЛКИ ===== */
+        /* ---------- ССЫЛКИ НА РЕСУРСЫ ---------- */
         .links-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -318,6 +319,49 @@
         .link-card .desc {
             font-size: 0.95rem;
             color: #b5aea2;
+        }
+
+        /* ---------- НОВЫЙ БЛОК: БЛИЖАЙШИЕ СОБЫТИЯ ---------- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .event-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(2px);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #d4a743;
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateX(6px);
+            border-color: #f0ece4;
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
+        }
+
+        .event-card .date {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #d4a743;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .event-card .name {
+            font-size: 1.2rem;
+            color: #f0ece4;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .event-card .place {
+            font-size: 1rem;
+            color: #8a847a;
         }
 
         /* ---------- Кобудо и Тайфукан ---------- */
@@ -457,6 +501,32 @@
             transform: translateY(-2px);
         }
 
+        /* ---------- КНОПКА "НАВЕРХ" ---------- */
+        #topBtn {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 999;
+            background: #d4a743;
+            color: #0b0b0b;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.3);
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        #topBtn:hover {
+            transform: scale(1.15) translateY(-4px);
+            background: #f0ece4;
+            box-shadow: 0 0 40px rgba(212, 167, 67, 0.5);
+        }
+
         /* ---------- Футер ---------- */
         footer {
             padding: 40px 0;
@@ -510,6 +580,13 @@
                 padding: 12px 32px;
                 font-size: 1rem;
             }
+            #topBtn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 500px) {
@@ -540,6 +617,9 @@
             .links-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -553,7 +633,8 @@
                 <nav>
                     <a href="#about">О канале</a>
                     <a href="#links">Ссылки</a>
-                    <a href="#org">Кобудо & Тайфукан</a>
+                    <a href="#events">События</a>
+                    <a href="#org">Кобудо</a>
                     <a href="#coach">Автор</a>
                     <a href="#contacts">Контакты</a>
                 </nav>
@@ -574,7 +655,7 @@
                     бойцов ММА, рукопашников и самбистов.
                 </p>
                 <a href="https://youtube.com/@karatetoday" target="_blank" class="btn">Перейти на YouTube</a>
-                <a href="#links" class="btn btn-outline">Полезные ссылки</a>
+                <a href="#events" class="btn btn-outline">События</a>
             </div>
         </section>
 
@@ -623,7 +704,7 @@
             </div>
         </section>
 
-        <!-- ===== НОВЫЙ РАЗДЕЛ: ССЫЛКИ НА РЕСУРСЫ ===== -->
+        <!-- ===== ССЫЛКИ НА РЕСУРСЫ ===== -->
         <section id="links">
             <div class="container">
                 <h2 class="section-title">📌 Полезные ресурсы</h2>
@@ -655,6 +736,37 @@
                         <span class="title">VK сообщество</span>
                         <span class="desc">Новости и общение с единомышленниками</span>
                     </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== НОВЫЙ БЛОК: БЛИЖАЙШИЕ СОБЫТИЯ ===== -->
+        <section id="events">
+            <div class="container">
+                <h2 class="section-title">⚡ Ближайшие события</h2>
+                <p class="section-sub">
+                    Семинары, соревнования и аттестации — присоединяйтесь!
+                </p>
+                <div class="events-grid">
+
+                    <div class="event-card">
+                        <span class="date">📅 7–9 ноября 2025</span>
+                        <span class="name">Международный семинар по Тайфукан Кобудо</span>
+                        <span class="place">📍 Минск</span>
+                    </div>
+
+                    <div class="event-card">
+                        <span class="date">📅 13–19 августа 2025</span>
+                        <span class="name">11-й Международный семинар по Каратэ и Кобудо</span>
+                        <span class="place">📍 Санкт-Петербург</span>
+                    </div>
+
+                    <div class="event-card">
+                        <span class="date">📅 11–12 апреля 2025</span>
+                        <span class="name">6-й Международный семинар по Каратэ и Кобудо</span>
+                        <span class="place">📍 Москва</span>
+                    </div>
 
                 </div>
             </div>
@@ -740,5 +852,29 @@
         </footer>
 
     </div>
+
+    <!-- ===== КНОПКА "НАВЕРХ" ===== -->
+    <button id="topBtn" title="Наверх">⬆</button>
+
+    <script>
+        // Показываем кнопку при прокрутке вниз
+        const topBtn = document.getElementById("topBtn");
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        });
+
+        // Плавный скролл наверх
+        topBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
 </body>
 </html>
