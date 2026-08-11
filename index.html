@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>KARATE TODAY — Всё о боевых искусствах</title>
+    <title>KARATE TODAY — 空手</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
@@ -21,17 +21,45 @@
             color: #f0ece4;
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* ВОЗВРАЩАЕМ РОДНОЙ РАБОЧИЙ ЯПОНСКИЙ ФОН */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M120 280 Q140 240 180 260 Q220 280 240 250 Q260 220 300 240 Q340 260 360 230 L400 200 L400 400 L0 400 L0 200 Q40 230 80 250 Q120 270 120 280Z' fill='rgba(212,167,67,0.03)'/%3E%3Cpath d='M100 320 Q130 280 170 300 Q210 320 230 290 Q250 260 290 280 Q330 300 350 270 L400 240 L400 400 L0 400 L0 240 Q30 270 70 290 Q110 310 100 320Z' fill='rgba(212,167,67,0.025)'/%3E%3Cpath d='M80 360 Q110 320 160 340 Q210 360 230 330 Q250 300 290 320 Q330 340 350 310 L400 280 L400 400 L0 400 L0 280 Q20 310 60 330 Q100 350 80 360Z' fill='rgba(212,167,67,0.02)'/%3E%3C/svg%3E");
+            /* ЯПОНСКИЙ ФОН С САКУРОЙ */
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(60, 30, 20, 0.3) 0%, rgba(11, 11, 11, 0.9) 90%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M120 280 Q140 240 180 260 Q220 280 240 250 Q260 220 300 240 Q340 260 360 230 L400 200 L400 400 L0 400 L0 200 Q40 230 80 250 Q120 270 120 280Z' fill='rgba(212,167,67,0.03)'/%3E%3Cpath d='M100 320 Q130 280 170 300 Q210 320 230 290 Q250 260 290 280 Q330 300 350 270 L400 240 L400 400 L0 400 L0 240 Q30 270 70 290 Q110 310 100 320Z' fill='rgba(212,167,67,0.025)'/%3E%3Cpath d='M80 360 Q110 320 160 340 Q210 360 230 330 Q250 300 290 320 Q330 340 350 310 L400 280 L400 400 L0 400 L0 280 Q20 310 60 330 Q100 350 80 360Z' fill='rgba(212,167,67,0.02)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 400px 400px;
             background-attachment: fixed;
         }
 
+        /* ЯПОНСКИЙ ДЕКОРАТИВНЫЙ ЭЛЕМЕНТ — САКУРА (плавающие лепестки) */
+        body::before {
+            content: '🌸';
+            position: fixed;
+            font-size: 4rem;
+            opacity: 0.08;
+            bottom: 10%;
+            right: 5%;
+            transform: rotate(-15deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '⚔️';
+            position: fixed;
+            font-size: 8rem;
+            opacity: 0.04;
+            top: 15%;
+            left: 3%;
+            transform: rotate(25deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .content-wrapper {
-            background: rgba(11, 11, 11, 0.85);
-            backdrop-filter: blur(1px);
+            background: rgba(11, 11, 11, 0.7);
+            backdrop-filter: blur(2px);
             min-height: 100vh;
+            position: relative;
+            z-index: 1;
         }
 
         .container {
@@ -40,15 +68,17 @@
             padding: 0 20px;
         }
 
-        /* ---------- ШАПКА ---------- */
+        /* ---------- ПЛАВАЮЩАЯ ШАПКА ---------- */
         header {
-            padding: 20px 0;
-            border-bottom: 1px solid #2a2a2a;
+            padding: 18px 0;
+            border-bottom: 2px solid #b31b1b;
             position: sticky;
             top: 0;
             background: rgba(11, 11, 11, 0.92);
-            backdrop-filter: blur(6px);
-            z-index: 100;
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.6);
         }
 
         .header-inner {
@@ -64,159 +94,218 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #d4a743;
-            text-shadow: 0 0 8px rgba(212, 167, 67, 0.3);
+            text-shadow: 0 0 12px rgba(212, 167, 67, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-
+        .logo .kanji {
+            font-family: serif;
+            font-size: 2.2rem;
+            color: #b31b1b;
+            text-shadow: 0 0 20px rgba(179, 27, 27, 0.3);
+            letter-spacing: 2px;
+        }
         .logo span {
             color: #f0ece4;
+        }
+        .logo:hover {
+            text-shadow: 0 0 25px rgba(212, 167, 67, 0.5);
         }
 
         nav a {
             color: #f0ece4;
             text-decoration: none;
             margin-left: 30px;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            transition: all 0.3s;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
+            position: relative;
         }
-
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #b31b1b;
+            transition: width 0.3s ease;
+        }
         nav a:hover {
-            color: #d4a743;
-            border-bottom-color: #d4a743;
+            color: #b31b1b;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* ---------- ГЕРОЙ ---------- */
         .hero {
-            padding: 100px 0 80px;
+            padding: 110px 0 90px;
             text-align: center;
-            background: radial-gradient(circle at 20% 30%, rgba(26,21,16,0.8) 0%, rgba(11,11,11,0.6) 80%);
-            border-bottom: 1px solid #2a2a2a;
+            background: radial-gradient(circle at 30% 20%, rgba(40,20,10,0.5) 0%, rgba(11,11,11,0.8) 80%);
+            border-bottom: 2px solid #b31b1b;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '⚔️ 空手 ⚔️';
+            position: absolute;
+            font-size: 12rem;
+            opacity: 0.03;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-5deg);
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: serif;
+            letter-spacing: 20px;
         }
 
         .hero h1 {
-            font-size: 4.2rem;
+            font-size: 4.6rem;
             font-weight: 700;
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             text-transform: uppercase;
             color: #d4a743;
-            text-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
-            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(212, 167, 67, 0.15);
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 .hero-icon {
             display: inline-block;
-            font-size: 3.8rem;
+            font-size: 4.2rem;
             margin-right: 15px;
             vertical-align: middle;
-            animation: pulse-fist 2.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(212, 167, 67, 0.2));
+            animation: pulse-fist 2.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(212, 167, 67, 0.2));
         }
 
         @keyframes pulse-fist {
             0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(-8deg); }
+            50% { transform: scale(1.12) rotate(-6deg); }
             100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .hero h1 .kanji-big {
+            font-family: serif;
+            font-size: 5rem;
+            color: #b31b1b;
+            display: block;
+            margin-top: 5px;
+            letter-spacing: 15px;
+            text-shadow: 0 0 30px rgba(179, 27, 27, 0.2);
         }
 
         .hero h1 small {
             display: block;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #f0ece4;
-            letter-spacing: 8px;
-            margin-top: 10px;
+            letter-spacing: 10px;
+            margin-top: 12px;
+            font-weight: 300;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             max-width: 700px;
-            margin: 0 auto 40px;
-            color: #b5aea2;
+            margin: 0 auto 45px;
+            color: #c5bdb0;
+            animation: fadeInUp 1.2s ease-out;
+            border-left: 3px solid #b31b1b;
+            padding-left: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ---------- КНОПКИ ---------- */
         .btn {
             display: inline-block;
-            background: #d4a743;
-            color: #0b0b0b;
-            padding: 14px 48px;
+            background: #b31b1b;
+            color: #f0ece4;
+            padding: 16px 52px;
             font-size: 1.2rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 4px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 2px solid #d4a743;
+            border: 2px solid #b31b1b;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(212, 167, 67, 0.1);
+            box-shadow: 0 0 25px rgba(179, 27, 27, 0.2);
         }
 
         .btn::after {
-            content: '';
+            content: '⚔️';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             opacity: 0;
-            transition: opacity 0.6s;
-            transform: scale(0.5);
+            transition: opacity 0.4s;
         }
 
         .btn:hover {
             background: transparent;
-            color: #d4a743;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.25), inset 0 0 20px rgba(212, 167, 67, 0.05);
-            border-color: #d4a743;
+            color: #b31b1b;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 45px rgba(179, 27, 27, 0.3);
+            border-color: #b31b1b;
+            padding-right: 70px;
         }
-
         .btn:hover::after {
             opacity: 1;
-            transform: scale(1);
-        }
-
-        .btn:active {
-            transform: translateY(0px) scale(0.98);
         }
 
         .btn-outline {
             background: transparent;
-            color: #d4a743;
-            border-color: #d4a743;
-            margin-left: 16px;
+            color: #b31b1b;
+            border-color: #b31b1b;
+            margin-left: 18px;
             box-shadow: none;
         }
 
         .btn-outline:hover {
-            background: #d4a743;
-            color: #0b0b0b;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
-        }
-
-        .btn-outline:hover::after {
-            opacity: 0;
+            background: #b31b1b;
+            color: #f0ece4;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 45px rgba(179, 27, 27, 0.2);
         }
 
         /* ---------- СЕКЦИИ ---------- */
         section {
-            padding: 80px 0;
-            border-bottom: 1px solid #1e1e1e;
+            padding: 90px 0;
+            border-bottom: 1px solid rgba(179, 27, 27, 0.15);
+            position: relative;
         }
 
         .section-title {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             color: #d4a743;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-align: center;
+            text-shadow: 0 0 20px rgba(212, 167, 67, 0.06);
+        }
+        .section-title .kanji-sub {
+            font-family: serif;
+            font-size: 2rem;
+            color: #b31b1b;
+            display: block;
+            letter-spacing: 10px;
+            margin-top: 5px;
         }
 
         .section-sub {
@@ -224,14 +313,16 @@
             color: #b5aea2;
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 50px;
+            margin: 0 auto 55px;
+            border-bottom: 1px solid rgba(179, 27, 27, 0.2);
+            padding-bottom: 15px;
         }
 
         /* ---------- О КАНАЛЕ ---------- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
@@ -239,6 +330,8 @@
             font-size: 1.15rem;
             margin-bottom: 20px;
             color: #ccc6ba;
+            border-left: 3px solid #b31b1b;
+            padding-left: 20px;
         }
 
         .about-text strong {
@@ -252,16 +345,22 @@
         }
 
         .stat-card {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(2px);
-            padding: 30px 20px;
+            padding: 35px 20px;
             text-align: center;
             border-radius: 8px;
-            border: 1px solid #2a2a2a;
+            border: 1px solid rgba(179, 27, 27, 0.2);
+            transition: all 0.4s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: #b31b1b;
+            box-shadow: 0 0 30px rgba(179, 27, 27, 0.1);
         }
 
         .stat-card .number {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             color: #d4a743;
             display: block;
@@ -270,42 +369,56 @@
         .stat-card .label {
             font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: #8a847a;
         }
 
         /* ---------- ССЫЛКИ ---------- */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
 
         .link-card {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(2px);
-            padding: 30px 20px;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            padding: 35px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(179, 27, 27, 0.15);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             color: #f0ece4;
             display: block;
+            position: relative;
+            overflow: hidden;
         }
-
+        .link-card::before {
+            content: '⛩️';
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.05;
+            bottom: -10px;
+            right: -10px;
+            transform: rotate(15deg);
+        }
         .link-card:hover {
-            transform: translateY(-6px);
-            border-color: #d4a743;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.1);
+            transform: translateY(-8px) scale(1.02);
+            border-color: #b31b1b;
+            box-shadow: 0 0 40px rgba(179, 27, 27, 0.08);
             background: rgba(30, 30, 30, 0.8);
         }
 
         .link-card .icon {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             display: block;
             margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
+        .link-card:hover .icon {
+            transform: scale(1.15) rotate(-4deg);
         }
 
         .link-card .title {
@@ -321,42 +434,53 @@
             color: #b5aea2;
         }
 
-        /* ---------- НОВОСТИ (работающий блок) ---------- */
+        /* ---------- НОВОСТИ ---------- */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
 
         .news-card {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(2px);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid #d4a743;
-            transition: all 0.3s ease;
+            padding: 30px 25px;
+            border-radius: 8px;
+            border-left: 5px solid #b31b1b;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-
+        .news-card::after {
+            content: '🌸';
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.06;
+            bottom: -10px;
+            right: -10px;
+            transform: rotate(-10deg);
+        }
         .news-card:hover {
-            transform: translateX(6px);
-            border-color: #f0ece4;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
+            transform: translateX(10px) scale(1.01);
+            border-color: #d4a743;
+            box-shadow: 0 0 35px rgba(179, 27, 27, 0.05);
         }
 
         .news-card .date {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            color: #d4a743;
+            color: #b31b1b;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .news-card .title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: #f0ece4;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .news-card .source {
@@ -364,7 +488,7 @@
             color: #8a847a;
         }
         .news-card .source a {
-            color: #d4a743;
+            color: #b31b1b;
             text-decoration: none;
         }
         .news-card .source a:hover {
@@ -375,27 +499,27 @@
         .org-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 45px;
         }
 
         .org-card {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(2px);
-            padding: 35px 30px;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(179, 27, 27, 0.15);
             text-align: center;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
         }
 
         .org-card:hover {
-            transform: translateY(-4px);
-            border-color: #d4a743;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
+            transform: translateY(-6px);
+            border-color: #b31b1b;
+            box-shadow: 0 0 40px rgba(179, 27, 27, 0.06);
         }
 
         .org-card .icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 15px;
             display: block;
         }
@@ -416,41 +540,46 @@
             display: flex;
             gap: 50px;
             align-items: flex-start;
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(2px);
-            padding: 40px;
+            padding: 45px;
             border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(179, 27, 27, 0.15);
+            transition: all 0.4s ease;
         }
 
         .coach-wrap:hover {
-            border-color: #d4a743;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.06);
+            border-color: #b31b1b;
+            box-shadow: 0 0 40px rgba(179, 27, 27, 0.05);
         }
 
         .coach-wrap .avatar {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: #2a2a2a;
+            background: radial-gradient(circle at 30% 20%, #2a1a0a, #0d0b08);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 5.5rem;
             flex-shrink: 0;
-            border: 3px solid #d4a743;
+            border: 3px solid #b31b1b;
+            box-shadow: 0 0 30px rgba(179, 27, 27, 0.1);
+            transition: transform 0.4s ease;
+        }
+        .coach-wrap:hover .avatar {
+            transform: scale(1.04);
         }
 
         .coach-wrap .bio h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #d4a743;
             margin-bottom: 5px;
         }
 
         .coach-wrap .bio .rank {
             font-size: 1.2rem;
-            color: #d4a743;
+            color: #b31b1b;
             margin-bottom: 15px;
             display: block;
         }
@@ -459,6 +588,8 @@
             color: #b5aea2;
             font-size: 1.1rem;
             margin-bottom: 10px;
+            border-left: 3px solid #b31b1b;
+            padding-left: 15px;
         }
 
         .coach-wrap .bio ul {
@@ -471,12 +602,16 @@
         .coach-wrap .bio ul li {
             margin-bottom: 8px;
             font-size: 1.05rem;
+            padding-left: 8px;
         }
 
         .coach-wrap .bio .slogan {
             margin-top: 18px;
             font-weight: 700;
             color: #d4a743;
+            font-size: 1.2rem;
+            border-left: none;
+            padding-left: 0;
         }
 
         /* ---------- КОНТАКТЫ ---------- */
@@ -487,7 +622,7 @@
         .contacts .socials {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
             margin-top: 30px;
         }
@@ -499,13 +634,13 @@
             letter-spacing: 1px;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .contacts .socials a:hover {
-            color: #d4a743;
-            border-bottom-color: #d4a743;
-            transform: translateY(-2px);
+            color: #b31b1b;
+            border-bottom-color: #b31b1b;
+            transform: translateY(-3px);
         }
 
         /* ---------- КНОПКА "НАВЕРХ" ---------- */
@@ -515,36 +650,37 @@
             bottom: 40px;
             right: 40px;
             z-index: 999;
-            background: #d4a743;
-            color: #0b0b0b;
+            background: #b31b1b;
+            color: #f0ece4;
             border: none;
             border-radius: 50%;
             width: 60px;
             height: 60px;
             font-size: 2.2rem;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.3);
+            box-shadow: 0 0 30px rgba(179, 27, 27, 0.25);
             transition: all 0.3s ease;
             line-height: 1;
         }
 
         #topBtn:hover {
             transform: scale(1.15) translateY(-4px);
-            background: #f0ece4;
-            box-shadow: 0 0 40px rgba(212, 167, 67, 0.5);
+            background: #d4a743;
+            color: #0b0b0b;
+            box-shadow: 0 0 50px rgba(212, 167, 67, 0.4);
         }
 
         /* ---------- ФУТЕР ---------- */
         footer {
-            padding: 40px 0;
+            padding: 45px 0;
             text-align: center;
             color: #5a544a;
             font-size: 0.95rem;
-            border-top: 1px solid #1e1e1e;
+            border-top: 1px solid rgba(179, 27, 27, 0.15);
         }
 
         footer span {
-            color: #d4a743;
+            color: #b31b1b;
         }
 
         /* ---------- АДАПТИВ ---------- */
@@ -556,6 +692,7 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                padding: 30px;
             }
             .coach-wrap .bio ul {
                 text-align: left;
@@ -568,8 +705,17 @@
                 font-size: 2.8rem;
                 margin-right: 10px;
             }
+            .hero h1 .kanji-big {
+                font-size: 3rem;
+            }
             .hero h1 small {
+                font-size: 1.3rem;
+            }
+            .hero p {
                 font-size: 1.2rem;
+                text-align: center;
+                border-left: none;
+                padding-left: 0;
             }
             .header-inner {
                 flex-direction: column;
@@ -577,14 +723,14 @@
             }
             nav a {
                 margin: 0 12px;
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             .btn-outline {
                 margin-left: 0;
                 margin-top: 12px;
             }
             .btn {
-                padding: 12px 32px;
+                padding: 14px 35px;
                 font-size: 1rem;
             }
             #topBtn {
@@ -593,6 +739,9 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.8rem;
+            }
+            .hero::before {
+                font-size: 6rem;
             }
         }
 
@@ -607,8 +756,18 @@
                 font-size: 2.2rem;
                 margin-right: 8px;
             }
+            .hero h1 .kanji-big {
+                font-size: 2.2rem;
+            }
+            .hero h1 small {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
             .section-title {
                 font-size: 2rem;
+            }
+            .section-title .kanji-sub {
+                font-size: 1.4rem;
             }
             .about-stats {
                 grid-template-columns: 1fr;
@@ -617,15 +776,22 @@
                 padding-left: 10px;
             }
             .btn {
-                padding: 10px 24px;
-                font-size: 0.9rem;
-                letter-spacing: 1px;
+                padding: 10px 22px;
+                font-size: 0.85rem;
             }
             .links-grid {
                 grid-template-columns: 1fr 1fr;
             }
             .news-grid {
                 grid-template-columns: 1fr;
+            }
+            .coach-wrap .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
+            }
+            body::before, body::after {
+                display: none;
             }
         }
     </style>
@@ -636,7 +802,10 @@
         <!-- ===== ШАПКА ===== -->
         <header>
             <div class="container header-inner">
-                <div class="logo">KARATE <span>TODAY</span></div>
+                <div class="logo">
+                    <span class="kanji">空手</span>
+                    KARATE <span>TODAY</span>
+                </div>
                 <nav>
                     <a href="#about">О канале</a>
                     <a href="#links">Ссылки</a>
@@ -654,6 +823,7 @@
                 <h1>
                     <span class="hero-icon">👊</span>
                     KARATE TODAY
+                    <span class="kanji-big">空手</span>
                     <small>Всё о боевых искусствах</small>
                 </h1>
                 <p>
@@ -669,7 +839,10 @@
         <!-- ===== О КАНАЛЕ ===== -->
         <section id="about">
             <div class="container">
-                <h2 class="section-title">О канале</h2>
+                <h2 class="section-title">
+                    О канале
+                    <span class="kanji-sub">道</span>
+                </h2>
                 <p class="section-sub">
                     KARATE TODAY — это сообщество тех, кто живёт боевыми искусствами.
                     Здесь ты найдёшь глубокий разбор техник, авторские тренировки и
@@ -714,7 +887,10 @@
         <!-- ===== ССЫЛКИ ===== -->
         <section id="links">
             <div class="container">
-                <h2 class="section-title">📌 Полезные ресурсы</h2>
+                <h2 class="section-title">
+                    📌 Полезные ресурсы
+                    <span class="kanji-sub">道場</span>
+                </h2>
                 <p class="section-sub">
                     Переходите по ссылкам, чтобы узнать больше о карате, кобудо и клубе Тайфукан.
                 </p>
@@ -748,10 +924,13 @@
             </div>
         </section>
 
-        <!-- ===== НОВОСТИ (НОВЫЙ БЛОК) ===== -->
+        <!-- ===== НОВОСТИ ===== -->
         <section id="news">
             <div class="container">
-                <h2 class="section-title">🥋 Новости каратэ</h2>
+                <h2 class="section-title">
+                    🥋 Новости каратэ
+                    <span class="kanji-sub">武</span>
+                </h2>
                 <p class="section-sub">
                     Актуальные события из мира белорусского и международного каратэ.
                 </p>
@@ -782,7 +961,10 @@
         <!-- ===== КОБУДО ===== -->
         <section id="org">
             <div class="container">
-                <h2 class="section-title">Кобудо & Тайфукан</h2>
+                <h2 class="section-title">
+                    Кобудо & Тайфукан
+                    <span class="kanji-sub">古武道</span>
+                </h2>
                 <p class="section-sub">
                     Традиционное оружие и организация в Минске для настоящих воинов.
                 </p>
@@ -811,7 +993,10 @@
         <!-- ===== АВТОР ===== -->
         <section id="coach">
             <div class="container">
-                <h2 class="section-title">Автор канала</h2>
+                <h2 class="section-title">
+                    Автор канала
+                    <span class="kanji-sub">師範</span>
+                </h2>
                 <div class="coach-wrap">
                     <div class="avatar">🥋</div>
                     <div class="bio">
@@ -837,7 +1022,10 @@
         <!-- ===== КОНТАКТЫ ===== -->
         <section id="contacts" class="contacts">
             <div class="container">
-                <h2 class="section-title">Будь на связи</h2>
+                <h2 class="section-title">
+                    Будь на связи
+                    <span class="kanji-sub">連絡</span>
+                </h2>
                 <p class="section-sub">
                     Подписывайся на все соцсети, чтобы не пропускать новые видео, тренировки и события.
                 </p>
@@ -854,7 +1042,7 @@
         <!-- ===== ФУТЕР ===== -->
         <footer>
             <div class="container">
-                &copy; 2026 <span>KARATE TODAY</span> — Всё о боевых искусствах.
+                &copy; 2026 <span>KARATE TODAY</span> — 空手道 — Путь пустой руки.
             </div>
         </footer>
 
