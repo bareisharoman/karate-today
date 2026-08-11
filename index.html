@@ -17,19 +17,19 @@
 
         body {
             font-family: 'Roboto Condensed', sans-serif;
+            background: #0b0b0b;
             color: #f0ece4;
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* НОВЫЙ ФОН: градиент + текстура */
-            background: 
-                radial-gradient(ellipse at 30% 20%, #2a1f0f 0%, #0d0b08 70%),
-                repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
-            min-height: 100vh;
+            /* ВОЗВРАЩАЕМ РОДНОЙ РАБОЧИЙ ЯПОНСКИЙ ФОН */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M120 280 Q140 240 180 260 Q220 280 240 250 Q260 220 300 240 Q340 260 360 230 L400 200 L400 400 L0 400 L0 200 Q40 230 80 250 Q120 270 120 280Z' fill='rgba(212,167,67,0.03)'/%3E%3Cpath d='M100 320 Q130 280 170 300 Q210 320 230 290 Q250 260 290 280 Q330 300 350 270 L400 240 L400 400 L0 400 L0 240 Q30 270 70 290 Q110 310 100 320Z' fill='rgba(212,167,67,0.025)'/%3E%3Cpath d='M80 360 Q110 320 160 340 Q210 360 230 330 Q250 300 290 320 Q330 340 350 310 L400 280 L400 400 L0 400 L0 280 Q20 310 60 330 Q100 350 80 360Z' fill='rgba(212,167,67,0.02)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 400px 400px;
             background-attachment: fixed;
         }
 
         .content-wrapper {
-            background: rgba(11, 11, 11, 0.6);
+            background: rgba(11, 11, 11, 0.85);
             backdrop-filter: blur(1px);
             min-height: 100vh;
         }
@@ -40,16 +40,15 @@
             padding: 0 20px;
         }
 
-        /* ---------- ПЛАВАЮЩАЯ ШАПКА ---------- */
+        /* ---------- ШАПКА ---------- */
         header {
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(212, 167, 67, 0.2);
+            padding: 20px 0;
+            border-bottom: 1px solid #2a2a2a;
             position: sticky;
             top: 0;
             background: rgba(11, 11, 11, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            transition: all 0.4s ease;
+            backdrop-filter: blur(6px);
+            z-index: 100;
         }
 
         .header-inner {
@@ -65,12 +64,9 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #d4a743;
-            text-shadow: 0 0 12px rgba(212, 167, 67, 0.25);
-            transition: text-shadow 0.3s;
+            text-shadow: 0 0 8px rgba(212, 167, 67, 0.3);
         }
-        .logo:hover {
-            text-shadow: 0 0 25px rgba(212, 167, 67, 0.5);
-        }
+
         .logo span {
             color: #f0ece4;
         }
@@ -79,96 +75,64 @@
             color: #f0ece4;
             text-decoration: none;
             margin-left: 30px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             letter-spacing: 1px;
-            transition: all 0.3s;
+            transition: color 0.3s;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
-            position: relative;
         }
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #d4a743;
-            transition: width 0.3s ease;
-        }
+
         nav a:hover {
             color: #d4a743;
-        }
-        nav a:hover::after {
-            width: 100%;
+            border-bottom-color: #d4a743;
         }
 
         /* ---------- ГЕРОЙ ---------- */
         .hero {
-            padding: 110px 0 90px;
+            padding: 100px 0 80px;
             text-align: center;
-            background: radial-gradient(circle at 30% 20%, rgba(40,30,15,0.3) 0%, rgba(11,11,11,0.7) 80%);
-            border-bottom: 1px solid rgba(212, 167, 67, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '⚔️';
-            position: absolute;
-            font-size: 18rem;
-            opacity: 0.04;
-            top: -60px;
-            right: -60px;
-            transform: rotate(15deg);
-            pointer-events: none;
+            background: radial-gradient(circle at 20% 30%, rgba(26,21,16,0.8) 0%, rgba(11,11,11,0.6) 80%);
+            border-bottom: 1px solid #2a2a2a;
         }
 
         .hero h1 {
-            font-size: 4.6rem;
+            font-size: 4.2rem;
             font-weight: 700;
             letter-spacing: 6px;
             text-transform: uppercase;
             color: #d4a743;
-            text-shadow: 0 0 40px rgba(212, 167, 67, 0.15);
+            text-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
             margin-bottom: 20px;
-            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 .hero-icon {
             display: inline-block;
-            font-size: 4.2rem;
+            font-size: 3.8rem;
             margin-right: 15px;
             vertical-align: middle;
-            animation: pulse-fist 2.8s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(212, 167, 67, 0.2));
+            animation: pulse-fist 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(212, 167, 67, 0.2));
         }
 
         @keyframes pulse-fist {
             0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.12) rotate(-6deg); }
+            50% { transform: scale(1.1) rotate(-8deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
         .hero h1 small {
             display: block;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #f0ece4;
-            letter-spacing: 10px;
-            margin-top: 12px;
-            font-weight: 300;
+            letter-spacing: 8px;
+            margin-top: 10px;
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 45px;
-            color: #c5bdb0;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            margin: 0 auto 40px;
+            color: #b5aea2;
         }
 
         /* ---------- КНОПКИ ---------- */
@@ -176,18 +140,18 @@
             display: inline-block;
             background: #d4a743;
             color: #0b0b0b;
-            padding: 16px 52px;
+            padding: 14px 48px;
             font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 4px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 2px solid #d4a743;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.15);
+            box-shadow: 0 0 15px rgba(212, 167, 67, 0.1);
         }
 
         .btn::after {
@@ -197,7 +161,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(255,215,0,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.6s;
             transform: scale(0.5);
@@ -206,46 +170,53 @@
         .btn:hover {
             background: transparent;
             color: #d4a743;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 0 45px rgba(212, 167, 67, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.25), inset 0 0 20px rgba(212, 167, 67, 0.05);
             border-color: #d4a743;
         }
+
         .btn:hover::after {
             opacity: 1;
             transform: scale(1);
+        }
+
+        .btn:active {
+            transform: translateY(0px) scale(0.98);
         }
 
         .btn-outline {
             background: transparent;
             color: #d4a743;
             border-color: #d4a743;
-            margin-left: 18px;
+            margin-left: 16px;
             box-shadow: none;
         }
 
         .btn-outline:hover {
             background: #d4a743;
             color: #0b0b0b;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 0 45px rgba(212, 167, 67, 0.2);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
+        }
+
+        .btn-outline:hover::after {
+            opacity: 0;
         }
 
         /* ---------- СЕКЦИИ ---------- */
         section {
-            padding: 90px 0;
-            border-bottom: 1px solid rgba(30,30,30,0.6);
-            position: relative;
+            padding: 80px 0;
+            border-bottom: 1px solid #1e1e1e;
         }
 
         .section-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             color: #d4a743;
             margin-bottom: 20px;
             text-align: center;
-            text-shadow: 0 0 20px rgba(212, 167, 67, 0.06);
         }
 
         .section-sub {
@@ -253,14 +224,14 @@
             color: #b5aea2;
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 55px;
+            margin: 0 auto 50px;
         }
 
         /* ---------- О КАНАЛЕ ---------- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
 
@@ -281,22 +252,16 @@
         }
 
         .stat-card {
-            background: rgba(20, 20, 20, 0.6);
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 35px 20px;
+            padding: 30px 20px;
             text-align: center;
-            border-radius: 12px;
-            border: 1px solid rgba(42,42,42,0.5);
-            transition: all 0.4s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-6px);
-            border-color: #d4a743;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.06);
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
         }
 
         .stat-card .number {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: #d4a743;
             display: block;
@@ -312,54 +277,35 @@
         /* ---------- ССЫЛКИ ---------- */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
 
         .link-card {
-            background: rgba(20, 20, 20, 0.6);
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 35px 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(42,42,42,0.5);
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
             text-decoration: none;
             color: #f0ece4;
             display: block;
-            position: relative;
-            overflow: hidden;
         }
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(212,167,67,0.05) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
+
         .link-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-6px);
             border-color: #d4a743;
-            box-shadow: 0 0 40px rgba(212, 167, 67, 0.08);
-            background: rgba(30, 30, 30, 0.7);
-        }
-        .link-card:hover::before {
-            opacity: 1;
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.1);
+            background: rgba(30, 30, 30, 0.8);
         }
 
         .link-card .icon {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             display: block;
             margin-bottom: 15px;
-            transition: transform 0.4s ease;
-        }
-        .link-card:hover .icon {
-            transform: scale(1.15) rotate(-4deg);
         }
 
         .link-card .title {
@@ -375,53 +321,42 @@
             color: #b5aea2;
         }
 
-        /* ---------- НОВОСТИ ---------- */
+        /* ---------- НОВОСТИ (работающий блок) ---------- */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
 
         .news-card {
-            background: rgba(20, 20, 20, 0.6);
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 30px 25px;
-            border-radius: 16px;
-            border-left: 5px solid #d4a743;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .news-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(212,167,67,0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .news-card:hover {
-            transform: translateX(10px) scale(1.01);
-            border-color: #f0ece4;
-            box-shadow: 0 0 35px rgba(212, 167, 67, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #d4a743;
+            transition: all 0.3s ease;
         }
 
-        .news-card .title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #f0ece4;
-            display: block;
-            margin-bottom: 8px;
+        .news-card:hover {
+            transform: translateX(6px);
+            border-color: #f0ece4;
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
         }
 
         .news-card .date {
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
             color: #d4a743;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
+        }
+
+        .news-card .title {
+            font-size: 1.1rem;
+            color: #f0ece4;
+            display: block;
+            margin-bottom: 5px;
         }
 
         .news-card .source {
@@ -440,27 +375,27 @@
         .org-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 45px;
+            gap: 40px;
         }
 
         .org-card {
-            background: rgba(20, 20, 20, 0.6);
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 40px 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(42,42,42,0.5);
+            padding: 35px 30px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
             text-align: center;
-            transition: all 0.4s ease;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
 
         .org-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             border-color: #d4a743;
-            box-shadow: 0 0 40px rgba(212, 167, 67, 0.06);
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
         }
 
         .org-card .icon {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
             display: block;
         }
@@ -481,39 +416,34 @@
             display: flex;
             gap: 50px;
             align-items: flex-start;
-            background: rgba(20, 20, 20, 0.6);
+            background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 45px;
-            border-radius: 20px;
-            border: 1px solid rgba(42,42,42,0.5);
-            transition: all 0.4s ease;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #2a2a2a;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .coach-wrap:hover {
             border-color: #d4a743;
-            box-shadow: 0 0 40px rgba(212, 167, 67, 0.05);
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.06);
         }
 
         .coach-wrap .avatar {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            background: #2a2a2a;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5.5rem;
+            font-size: 5rem;
             flex-shrink: 0;
             border: 3px solid #d4a743;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.08);
-            transition: transform 0.4s ease;
-        }
-        .coach-wrap:hover .avatar {
-            transform: scale(1.04);
         }
 
         .coach-wrap .bio h3 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #d4a743;
             margin-bottom: 5px;
         }
@@ -523,7 +453,6 @@
             color: #d4a743;
             margin-bottom: 15px;
             display: block;
-            opacity: 0.8;
         }
 
         .coach-wrap .bio p {
@@ -542,14 +471,12 @@
         .coach-wrap .bio ul li {
             margin-bottom: 8px;
             font-size: 1.05rem;
-            padding-left: 8px;
         }
 
         .coach-wrap .bio .slogan {
             margin-top: 18px;
             font-weight: 700;
             color: #d4a743;
-            font-size: 1.2rem;
         }
 
         /* ---------- КОНТАКТЫ ---------- */
@@ -560,7 +487,7 @@
         .contacts .socials {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
             margin-top: 30px;
         }
@@ -572,13 +499,13 @@
             letter-spacing: 1px;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .contacts .socials a:hover {
             color: #d4a743;
             border-bottom-color: #d4a743;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         /* ---------- КНОПКА "НАВЕРХ" ---------- */
@@ -596,7 +523,7 @@
             height: 60px;
             font-size: 2.2rem;
             cursor: pointer;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.25);
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.3);
             transition: all 0.3s ease;
             line-height: 1;
         }
@@ -604,16 +531,16 @@
         #topBtn:hover {
             transform: scale(1.15) translateY(-4px);
             background: #f0ece4;
-            box-shadow: 0 0 50px rgba(212, 167, 67, 0.4);
+            box-shadow: 0 0 40px rgba(212, 167, 67, 0.5);
         }
 
         /* ---------- ФУТЕР ---------- */
         footer {
-            padding: 45px 0;
+            padding: 40px 0;
             text-align: center;
             color: #5a544a;
             font-size: 0.95rem;
-            border-top: 1px solid rgba(30,30,30,0.6);
+            border-top: 1px solid #1e1e1e;
         }
 
         footer span {
@@ -629,7 +556,6 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                padding: 30px;
             }
             .coach-wrap .bio ul {
                 text-align: left;
@@ -643,9 +569,6 @@
                 margin-right: 10px;
             }
             .hero h1 small {
-                font-size: 1.3rem;
-            }
-            .hero p {
                 font-size: 1.2rem;
             }
             .header-inner {
@@ -654,14 +577,14 @@
             }
             nav a {
                 margin: 0 12px;
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
             .btn-outline {
                 margin-left: 0;
                 margin-top: 12px;
             }
             .btn {
-                padding: 14px 35px;
+                padding: 12px 32px;
                 font-size: 1rem;
             }
             #topBtn {
@@ -670,11 +593,6 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.8rem;
-            }
-            .hero::before {
-                font-size: 10rem;
-                top: -30px;
-                right: -30px;
             }
         }
 
@@ -689,10 +607,6 @@
                 font-size: 2.2rem;
                 margin-right: 8px;
             }
-            .hero h1 small {
-                font-size: 1rem;
-                letter-spacing: 4px;
-            }
             .section-title {
                 font-size: 2rem;
             }
@@ -703,19 +617,15 @@
                 padding-left: 10px;
             }
             .btn {
-                padding: 10px 22px;
-                font-size: 0.85rem;
+                padding: 10px 24px;
+                font-size: 0.9rem;
+                letter-spacing: 1px;
             }
             .links-grid {
                 grid-template-columns: 1fr 1fr;
             }
             .news-grid {
                 grid-template-columns: 1fr;
-            }
-            .coach-wrap .avatar {
-                width: 120px;
-                height: 120px;
-                font-size: 3.5rem;
             }
         }
     </style>
@@ -838,7 +748,7 @@
             </div>
         </section>
 
-        <!-- ===== НОВОСТИ ===== -->
+        <!-- ===== НОВОСТИ (НОВЫЙ БЛОК) ===== -->
         <section id="news">
             <div class="container">
                 <h2 class="section-title">🥋 Новости каратэ</h2>
