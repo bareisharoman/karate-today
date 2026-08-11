@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ---------- Общие стили ---------- */
+        /* ---------- ОБЩИЕ СТИЛИ ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -28,7 +28,7 @@
         }
 
         .content-wrapper {
-            background: rgba(11, 11, 11, 0.85);
+            background: rgba(11, 11, 11, 0.82);
             backdrop-filter: blur(1px);
             min-height: 100vh;
         }
@@ -39,16 +39,16 @@
             padding: 0 20px;
         }
 
-        /* ---------- Шапка (усиленная липкость) ---------- */
+        /* ---------- ПЛАВАЮЩАЯ ШАПКА ---------- */
         header {
-            padding: 20px 0;
-            border-bottom: 1px solid #2a2a2a;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(212, 167, 67, 0.2);
             position: sticky;
             top: 0;
-            background: rgba(11, 11, 11, 0.95);
-            backdrop-filter: blur(8px);
+            background: rgba(11, 11, 11, 0.92);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .header-inner {
@@ -64,9 +64,12 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #d4a743;
-            text-shadow: 0 0 8px rgba(212, 167, 67, 0.3);
+            text-shadow: 0 0 12px rgba(212, 167, 67, 0.25);
+            transition: text-shadow 0.3s;
         }
-
+        .logo:hover {
+            text-shadow: 0 0 25px rgba(212, 167, 67, 0.5);
+        }
         .logo span {
             color: #f0ece4;
         }
@@ -75,83 +78,115 @@
             color: #f0ece4;
             text-decoration: none;
             margin-left: 30px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            transition: all 0.3s;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
+            position: relative;
         }
-
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a743;
+            transition: width 0.3s ease;
+        }
         nav a:hover {
             color: #d4a743;
-            border-bottom-color: #d4a743;
+        }
+        nav a:hover::after {
+            width: 100%;
         }
 
-        /* ---------- Герой ---------- */
+        /* ---------- ГЕРОЙ ---------- */
         .hero {
-            padding: 100px 0 80px;
+            padding: 110px 0 90px;
             text-align: center;
-            background: radial-gradient(circle at 20% 30%, rgba(26,21,16,0.8) 0%, rgba(11,11,11,0.6) 80%);
-            border-bottom: 1px solid #2a2a2a;
+            background: radial-gradient(circle at 30% 20%, rgba(40,30,15,0.6) 0%, rgba(11,11,11,0.8) 80%);
+            border-bottom: 1px solid rgba(212, 167, 67, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '⚔️';
+            position: absolute;
+            font-size: 18rem;
+            opacity: 0.04;
+            top: -60px;
+            right: -60px;
+            transform: rotate(15deg);
+            pointer-events: none;
         }
 
         .hero h1 {
-            font-size: 4.2rem;
+            font-size: 4.6rem;
             font-weight: 700;
             letter-spacing: 6px;
             text-transform: uppercase;
             color: #d4a743;
-            text-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
+            text-shadow: 0 0 40px rgba(212, 167, 67, 0.15);
             margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 .hero-icon {
             display: inline-block;
-            font-size: 3.8rem;
+            font-size: 4.2rem;
             margin-right: 15px;
             vertical-align: middle;
-            animation: pulse-fist 2.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(212, 167, 67, 0.2));
+            animation: pulse-fist 2.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(212, 167, 67, 0.2));
         }
 
         @keyframes pulse-fist {
             0% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(-8deg); }
+            50% { transform: scale(1.12) rotate(-6deg); }
             100% { transform: scale(1) rotate(0deg); }
         }
 
         .hero h1 small {
             display: block;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #f0ece4;
-            letter-spacing: 8px;
-            margin-top: 10px;
+            letter-spacing: 10px;
+            margin-top: 12px;
+            font-weight: 300;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             max-width: 700px;
-            margin: 0 auto 40px;
-            color: #b5aea2;
+            margin: 0 auto 45px;
+            color: #c5bdb0;
+            animation: fadeInUp 1.2s ease-out;
         }
 
-        /* ---------- Кнопки ---------- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- КНОПКИ ---------- */
         .btn {
             display: inline-block;
             background: #d4a743;
             color: #0b0b0b;
-            padding: 14px 48px;
+            padding: 16px 52px;
             font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 50px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 2px solid #d4a743;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(212, 167, 67, 0.1);
+            box-shadow: 0 0 25px rgba(212, 167, 67, 0.15);
         }
 
         .btn::after {
@@ -161,7 +196,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(255,215,0,0.15) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.6s;
             transform: scale(0.5);
@@ -170,53 +205,46 @@
         .btn:hover {
             background: transparent;
             color: #d4a743;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.25), inset 0 0 20px rgba(212, 167, 67, 0.05);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 45px rgba(212, 167, 67, 0.3);
             border-color: #d4a743;
         }
-
         .btn:hover::after {
             opacity: 1;
             transform: scale(1);
-        }
-
-        .btn:active {
-            transform: translateY(0px) scale(0.98);
         }
 
         .btn-outline {
             background: transparent;
             color: #d4a743;
             border-color: #d4a743;
-            margin-left: 16px;
+            margin-left: 18px;
             box-shadow: none;
         }
 
         .btn-outline:hover {
             background: #d4a743;
             color: #0b0b0b;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.2);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 45px rgba(212, 167, 67, 0.2);
         }
 
-        .btn-outline:hover::after {
-            opacity: 0;
-        }
-
-        /* ---------- Секции ---------- */
+        /* ---------- СЕКЦИИ ---------- */
         section {
-            padding: 80px 0;
-            border-bottom: 1px solid #1e1e1e;
+            padding: 90px 0;
+            border-bottom: 1px solid rgba(30,30,30,0.8);
+            position: relative;
         }
 
         .section-title {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: #d4a743;
             margin-bottom: 20px;
             text-align: center;
+            text-shadow: 0 0 20px rgba(212, 167, 67, 0.06);
         }
 
         .section-sub {
@@ -224,14 +252,14 @@
             color: #b5aea2;
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 50px;
+            margin: 0 auto 55px;
         }
 
-        /* ---------- О канале ---------- */
+        /* ---------- О КАНАЛЕ ---------- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
 
@@ -254,14 +282,20 @@
         .stat-card {
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 30px 20px;
+            padding: 35px 20px;
             text-align: center;
-            border-radius: 8px;
-            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            border: 1px solid rgba(42,42,42,0.6);
+            transition: all 0.4s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: #d4a743;
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.06);
         }
 
         .stat-card .number {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             color: #d4a743;
             display: block;
@@ -274,10 +308,10 @@
             color: #8a847a;
         }
 
-        /* ---------- ССЫЛКИ НА РЕСУРСЫ ---------- */
+        /* ---------- ССЫЛКИ (КАРТОЧКИ С АНИМАЦИЕЙ) ---------- */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
@@ -285,27 +319,46 @@
         .link-card {
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 30px 20px;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            padding: 35px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(42,42,42,0.6);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             color: #f0ece4;
             display: block;
+            position: relative;
+            overflow: hidden;
         }
-
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212,167,67,0.05) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
         .link-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px) scale(1.02);
             border-color: #d4a743;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.1);
-            background: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 0 40px rgba(212, 167, 67, 0.08);
+            background: rgba(30, 30, 30, 0.85);
+        }
+        .link-card:hover::before {
+            opacity: 1;
         }
 
         .link-card .icon {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             display: block;
             margin-bottom: 15px;
+            transition: transform 0.4s ease;
+        }
+        .link-card:hover .icon {
+            transform: scale(1.15) rotate(-4deg);
         }
 
         .link-card .title {
@@ -321,10 +374,10 @@
             color: #b5aea2;
         }
 
-        /* ---------- НОВЫЙ БЛОК: БЛИЖАЙШИЕ СОБЫТИЯ ---------- */
+        /* ---------- СОБЫТИЯ ---------- */
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
@@ -332,24 +385,35 @@
         .event-card {
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid #d4a743;
-            transition: all 0.3s ease;
+            padding: 30px 25px;
+            border-radius: 16px;
+            border-left: 5px solid #d4a743;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-
+        .event-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(212,167,67,0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
         .event-card:hover {
-            transform: translateX(6px);
+            transform: translateX(10px) scale(1.01);
             border-color: #f0ece4;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
+            box-shadow: 0 0 35px rgba(212, 167, 67, 0.05);
         }
 
         .event-card .date {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #d4a743;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .event-card .name {
@@ -364,31 +428,31 @@
             color: #8a847a;
         }
 
-        /* ---------- Кобудо и Тайфукан ---------- */
+        /* ---------- КОБУДО ---------- */
         .org-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 45px;
         }
 
         .org-card {
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 35px 30px;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(42,42,42,0.6);
             text-align: center;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            transition: all 0.4s ease;
         }
 
         .org-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: #d4a743;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.06);
+            box-shadow: 0 0 40px rgba(212, 167, 67, 0.06);
         }
 
         .org-card .icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 15px;
             display: block;
         }
@@ -404,39 +468,44 @@
             font-size: 1.05rem;
         }
 
-        /* ---------- Тренер ---------- */
+        /* ---------- АВТОР ---------- */
         .coach-wrap {
             display: flex;
             gap: 50px;
             align-items: flex-start;
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #2a2a2a;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(42,42,42,0.6);
+            transition: all 0.4s ease;
         }
 
         .coach-wrap:hover {
             border-color: #d4a743;
-            box-shadow: 0 0 30px rgba(212, 167, 67, 0.06);
+            box-shadow: 0 0 40px rgba(212, 167, 67, 0.05);
         }
 
         .coach-wrap .avatar {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: #2a2a2a;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 5.5rem;
             flex-shrink: 0;
             border: 3px solid #d4a743;
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.08);
+            transition: transform 0.4s ease;
+        }
+        .coach-wrap:hover .avatar {
+            transform: scale(1.04);
         }
 
         .coach-wrap .bio h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #d4a743;
             margin-bottom: 5px;
         }
@@ -446,6 +515,7 @@
             color: #d4a743;
             margin-bottom: 15px;
             display: block;
+            opacity: 0.8;
         }
 
         .coach-wrap .bio p {
@@ -464,15 +534,17 @@
         .coach-wrap .bio ul li {
             margin-bottom: 8px;
             font-size: 1.05rem;
+            padding-left: 8px;
         }
 
         .coach-wrap .bio .slogan {
             margin-top: 18px;
             font-weight: 700;
             color: #d4a743;
+            font-size: 1.2rem;
         }
 
-        /* ---------- Контакты ---------- */
+        /* ---------- КОНТАКТЫ ---------- */
         .contacts {
             text-align: center;
         }
@@ -480,7 +552,7 @@
         .contacts .socials {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
             margin-top: 30px;
         }
@@ -492,13 +564,13 @@
             letter-spacing: 1px;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .contacts .socials a:hover {
             color: #d4a743;
             border-bottom-color: #d4a743;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         /* ---------- КНОПКА "НАВЕРХ" ---------- */
@@ -516,7 +588,7 @@
             height: 60px;
             font-size: 2.2rem;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.3);
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.25);
             transition: all 0.3s ease;
             line-height: 1;
         }
@@ -524,23 +596,23 @@
         #topBtn:hover {
             transform: scale(1.15) translateY(-4px);
             background: #f0ece4;
-            box-shadow: 0 0 40px rgba(212, 167, 67, 0.5);
+            box-shadow: 0 0 50px rgba(212, 167, 67, 0.4);
         }
 
-        /* ---------- Футер ---------- */
+        /* ---------- ФУТЕР ---------- */
         footer {
-            padding: 40px 0;
+            padding: 45px 0;
             text-align: center;
             color: #5a544a;
             font-size: 0.95rem;
-            border-top: 1px solid #1e1e1e;
+            border-top: 1px solid rgba(30,30,30,0.8);
         }
 
         footer span {
             color: #d4a743;
         }
 
-        /* ---------- Адаптив ---------- */
+        /* ---------- АДАПТИВ ---------- */
         @media (max-width: 900px) {
             .about-grid, .org-wrap {
                 grid-template-columns: 1fr;
@@ -549,6 +621,7 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                padding: 30px;
             }
             .coach-wrap .bio ul {
                 text-align: left;
@@ -562,6 +635,9 @@
                 margin-right: 10px;
             }
             .hero h1 small {
+                font-size: 1.3rem;
+            }
+            .hero p {
                 font-size: 1.2rem;
             }
             .header-inner {
@@ -570,14 +646,14 @@
             }
             nav a {
                 margin: 0 12px;
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             .btn-outline {
                 margin-left: 0;
                 margin-top: 12px;
             }
             .btn {
-                padding: 12px 32px;
+                padding: 14px 35px;
                 font-size: 1rem;
             }
             #topBtn {
@@ -586,6 +662,11 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.8rem;
+            }
+            .hero::before {
+                font-size: 10rem;
+                top: -30px;
+                right: -30px;
             }
         }
 
@@ -600,6 +681,10 @@
                 font-size: 2.2rem;
                 margin-right: 8px;
             }
+            .hero h1 small {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
             .section-title {
                 font-size: 2rem;
             }
@@ -610,15 +695,19 @@
                 padding-left: 10px;
             }
             .btn {
-                padding: 10px 24px;
-                font-size: 0.9rem;
-                letter-spacing: 1px;
+                padding: 10px 22px;
+                font-size: 0.85rem;
             }
             .links-grid {
                 grid-template-columns: 1fr 1fr;
             }
             .events-grid {
                 grid-template-columns: 1fr;
+            }
+            .coach-wrap .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3.5rem;
             }
         }
     </style>
@@ -641,7 +730,7 @@
             </div>
         </header>
 
-        <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
+        <!-- ===== ГЕРОЙ ===== -->
         <section class="hero">
             <div class="container">
                 <h1>
@@ -704,7 +793,7 @@
             </div>
         </section>
 
-        <!-- ===== ССЫЛКИ НА РЕСУРСЫ ===== -->
+        <!-- ===== ССЫЛКИ ===== -->
         <section id="links">
             <div class="container">
                 <h2 class="section-title">📌 Полезные ресурсы</h2>
@@ -716,32 +805,32 @@
                     <a href="https://karate-do.by" target="_blank" class="link-card">
                         <span class="icon">🏯</span>
                         <span class="title">Официальный сайт</span>
-                        <span class="desc">karate-do.by — всё о Тайфукан в Минске</span>
+                        <span class="desc">Всё о Тайфукан в Минске</span>
                     </a>
 
                     <a href="https://www.instagram.com/taifukan_karate_kobudo" target="_blank" class="link-card">
                         <span class="icon">📸</span>
                         <span class="title">Instagram Тайфукан</span>
-                        <span class="desc">Фото и видео с тренировок и соревнований</span>
+                        <span class="desc">Фото и видео с тренировок</span>
                     </a>
 
                     <a href="https://youtube.com/@karatetoday" target="_blank" class="link-card">
                         <span class="icon">▶️</span>
                         <span class="title">YouTube канал</span>
-                        <span class="desc">Видеоуроки, разборы и тренировки</span>
+                        <span class="desc">Видеоуроки, разборы, тренировки</span>
                     </a>
 
                     <a href="https://vk.ru/karatetoday" target="_blank" class="link-card">
                         <span class="icon">💬</span>
                         <span class="title">VK сообщество</span>
-                        <span class="desc">Новости и общение с единомышленниками</span>
+                        <span class="desc">Новости и общение</span>
                     </a>
 
                 </div>
             </div>
         </section>
 
-        <!-- ===== НОВЫЙ БЛОК: БЛИЖАЙШИЕ СОБЫТИЯ ===== -->
+        <!-- ===== СОБЫТИЯ ===== -->
         <section id="events">
             <div class="container">
                 <h2 class="section-title">⚡ Ближайшие события</h2>
@@ -772,7 +861,7 @@
             </div>
         </section>
 
-        <!-- ===== КОБУДО И ТАЙФУКАН ===== -->
+        <!-- ===== КОБУДО ===== -->
         <section id="org">
             <div class="container">
                 <h2 class="section-title">Кобудо & Тайфукан</h2>
@@ -847,34 +936,4 @@
         <!-- ===== ФУТЕР ===== -->
         <footer>
             <div class="container">
-                &copy; 2026 <span>KARATE TODAY</span> — Всё о боевых искусствах.
-            </div>
-        </footer>
-
-    </div>
-
-    <!-- ===== КНОПКА "НАВЕРХ" ===== -->
-    <button id="topBtn" title="Наверх">⬆</button>
-
-    <script>
-        // Показываем кнопку при прокрутке вниз
-        const topBtn = document.getElementById("topBtn");
-        window.addEventListener("scroll", function() {
-            if (window.scrollY > 300) {
-                topBtn.style.display = "block";
-            } else {
-                topBtn.style.display = "none";
-            }
-        });
-
-        // Плавный скролл наверх
-        topBtn.addEventListener("click", function() {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    </script>
-
-</body>
-</html>
+                &copy; 
