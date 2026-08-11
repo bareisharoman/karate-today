@@ -21,7 +21,6 @@
             color: #f0ece4;
             line-height: 1.6;
             scroll-behavior: smooth;
-            /* ----- ЯПОНСКИЙ ФОН (волны) ----- */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M120 280 Q140 240 180 260 Q220 280 240 250 Q260 220 300 240 Q340 260 360 230 L400 200 L400 400 L0 400 L0 200 Q40 230 80 250 Q120 270 120 280Z' fill='rgba(212,167,67,0.03)'/%3E%3Cpath d='M100 320 Q130 280 170 300 Q210 320 230 290 Q250 260 290 280 Q330 300 350 270 L400 240 L400 400 L0 400 L0 240 Q30 270 70 290 Q110 310 100 320Z' fill='rgba(212,167,67,0.025)'/%3E%3Cpath d='M80 360 Q110 320 160 340 Q210 360 230 330 Q250 300 290 320 Q330 340 350 310 L400 280 L400 400 L0 400 L0 280 Q20 310 60 330 Q100 350 80 360Z' fill='rgba(212,167,67,0.02)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 400px 400px;
@@ -135,7 +134,7 @@
             color: #b5aea2;
         }
 
-        /* ---------- ЯПОНСКИЙ СТИЛЬ КНОПОК ---------- */
+        /* ---------- Кнопки ---------- */
         .btn {
             display: inline-block;
             background: #d4a743;
@@ -274,60 +273,51 @@
             color: #8a847a;
         }
 
-        /* ---------- Видео ---------- */
-        .video-grid {
+        /* ===== НОВЫЙ БЛОК: ИКОНКИ И ССЫЛКИ ===== */
+        .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
+            margin-top: 30px;
         }
 
-        .video-card {
+        .link-card {
             background: rgba(20, 20, 20, 0.7);
             backdrop-filter: blur(2px);
-            border-radius: 8px;
-            overflow: hidden;
+            padding: 30px 20px;
+            border-radius: 12px;
             border: 1px solid #2a2a2a;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .video-card:hover {
-            transform: translateY(-6px);
-            border-color: #d4a743;
-            box-shadow: 0 0 25px rgba(212, 167, 67, 0.08);
-        }
-
-        .video-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #f0ece4;
             display: block;
         }
 
-        .video-card .info {
-            padding: 20px;
+        .link-card:hover {
+            transform: translateY(-6px);
+            border-color: #d4a743;
+            box-shadow: 0 0 30px rgba(212, 167, 67, 0.1);
+            background: rgba(30, 30, 30, 0.8);
         }
 
-        .video-card .info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #f0ece4;
+        .link-card .icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 15px;
         }
 
-        .video-card .info p {
-            color: #8a847a;
-            font-size: 0.95rem;
-        }
-
-        .video-card .info .tag {
-            display: inline-block;
-            background: #2a2a2a;
+        .link-card .title {
+            font-size: 1.3rem;
+            font-weight: 700;
             color: #d4a743;
-            font-size: 0.75rem;
-            padding: 2px 14px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .link-card .desc {
+            font-size: 0.95rem;
+            color: #b5aea2;
         }
 
         /* ---------- Кобудо и Тайфукан ---------- */
@@ -547,6 +537,9 @@
                 font-size: 0.9rem;
                 letter-spacing: 1px;
             }
+            .links-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
@@ -559,7 +552,7 @@
                 <div class="logo">KARATE <span>TODAY</span></div>
                 <nav>
                     <a href="#about">О канале</a>
-                    <a href="#videos">Видео</a>
+                    <a href="#links">Ссылки</a>
                     <a href="#org">Кобудо & Тайфукан</a>
                     <a href="#coach">Автор</a>
                     <a href="#contacts">Контакты</a>
@@ -581,7 +574,7 @@
                     бойцов ММА, рукопашников и самбистов.
                 </p>
                 <a href="https://youtube.com/@karatetoday" target="_blank" class="btn">Перейти на YouTube</a>
-                <a href="#videos" class="btn btn-outline">Смотреть видео</a>
+                <a href="#links" class="btn btn-outline">Полезные ссылки</a>
             </div>
         </section>
 
@@ -630,42 +623,38 @@
             </div>
         </section>
 
-        <!-- ===== ВИДЕО ===== -->
-        <section id="videos">
+        <!-- ===== НОВЫЙ РАЗДЕЛ: ССЫЛКИ НА РЕСУРСЫ ===== -->
+        <section id="links">
             <div class="container">
-                <h2 class="section-title">Популярные видео</h2>
+                <h2 class="section-title">📌 Полезные ресурсы</h2>
                 <p class="section-sub">
-                    Разборы ката, тренировки и техники — всё, что нужно для
-                    совершенствования.
+                    Переходите по ссылкам, чтобы узнать больше о карате, кобудо и клубе Тайфукан.
                 </p>
-                <div class="video-grid">
+                <div class="links-grid">
 
-                    <div class="video-card">
-                        <img src="https://img.youtube.com/vi/6qTGYIYtIgw/maxresdefault.jpg" alt="Ката Хейан Нидан">
-                        <div class="info">
-                            <h3>Изучаем ката ХЕЙАН НИДАН</h3>
-                            <p>Детальный разбор техники и амплитуды движений.</p>
-                            <span class="tag">Ката</span>
-                        </div>
-                    </div>
+                    <a href="https://karate-do.by" target="_blank" class="link-card">
+                        <span class="icon">🏯</span>
+                        <span class="title">Официальный сайт</span>
+                        <span class="desc">karate-do.by — всё о Тайфукан в Минске</span>
+                    </a>
 
-                    <div class="video-card">
-                        <img src="https://img.youtube.com/vi/1F9rHhKxqJ8/maxresdefault.jpg" alt="Ката Унсу">
-                        <div class="info">
-                            <h3>Ката УНСУ стиля шотокан</h3>
-                            <p>Медленное и быстрое выполнение — полный разбор.</p>
-                            <span class="tag">Шотокан</span>
-                        </div>
-                    </div>
+                    <a href="https://www.instagram.com/taifukan_karate_kobudo" target="_blank" class="link-card">
+                        <span class="icon">📸</span>
+                        <span class="title">Instagram Тайфукан</span>
+                        <span class="desc">Фото и видео с тренировок и соревнований</span>
+                    </a>
 
-                    <div class="video-card">
-                        <img src="https://img.youtube.com/vi/U9t-2hJXU_Q/maxresdefault.jpg" alt="Тренировка с мешком">
-                        <div class="info">
-                            <h3>Тренировка с тяжёлым мешком</h3>
-                            <p>Нестандартный вариант для каратистов и бойцов ММА.</p>
-                            <span class="tag">Тренировка</span>
-                        </div>
-                    </div>
+                    <a href="https://youtube.com/@karatetoday" target="_blank" class="link-card">
+                        <span class="icon">▶️</span>
+                        <span class="title">YouTube канал</span>
+                        <span class="desc">Видеоуроки, разборы и тренировки</span>
+                    </a>
+
+                    <a href="https://vk.ru/karatetoday" target="_blank" class="link-card">
+                        <span class="icon">💬</span>
+                        <span class="title">VK сообщество</span>
+                        <span class="desc">Новости и общение с единомышленниками</span>
+                    </a>
 
                 </div>
             </div>
@@ -734,11 +723,11 @@
                     Подписывайся на все соцсети, чтобы не пропускать новые видео, тренировки и события.
                 </p>
                 <div class="socials">
-                    <a href="https://youtube.com/@karatetoday" target="_blank">YouTube</a>
-                    <a href="https://www.tiktok.com/@karatetoday" target="_blank">TikTok</a>
-                    <a href="https://www.instagram.com/romanbareisha" target="_blank">Instagram (личный)</a>
-                    <a href="https://www.instagram.com/karate.today" target="_blank">Instagram (канал)</a>
-                    <a href="https://vk.ru/karatetoday" target="_blank">VK</a>
+                    <a href="https://youtube.com/@karatetoday" target="_blank">▶️ YouTube</a>
+                    <a href="https://www.tiktok.com/@karatetoday" target="_blank">🎵 TikTok</a>
+                    <a href="https://www.instagram.com/romanbareisha" target="_blank">📸 Instagram (личный)</a>
+                    <a href="https://www.instagram.com/karate.today" target="_blank">📸 Instagram (канал)</a>
+                    <a href="https://vk.ru/karatetoday" target="_blank">💬 VK</a>
                 </div>
             </div>
         </section>
